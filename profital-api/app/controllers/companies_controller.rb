@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
 
     # GET /companies
     def index
-        @companies = Company.All
+        @companies = Company.all
         render json: @companies
     end
 
