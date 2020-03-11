@@ -5,8 +5,12 @@ function Navbar() {
     <nav>
       <h3>Logo</h3>
       <ul>
-        <li>Portfolio</li>
-        <li>Trades</li>
+        <li>
+          <a href='#'>Porftolio</a>
+        </li>
+        <li>
+          <a href='#'>Trade</a>
+        </li>
       </ul>
     </nav>
   );
