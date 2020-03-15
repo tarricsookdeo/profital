@@ -2,7 +2,7 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
   def change
     create_table :companies do |t|
       t.string :ticker
-      t.has_one :position, foreign_key: true
+      t.integer :position_id, foreign_key: true
 
       t.timestamps
     end

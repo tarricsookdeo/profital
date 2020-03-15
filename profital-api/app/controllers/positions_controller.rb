@@ -46,6 +46,6 @@ class PositionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def position_params
-      params.require(:position).permit(:company, :trades, :shares, :avg_price, :total_cost)
+      params.require(:position).permit(:company_id, :shares, :avg_price, :total_cost)
     end
 end
