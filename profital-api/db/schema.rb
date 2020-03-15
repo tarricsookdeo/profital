@@ -10,24 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_225908) do
-
-  create_table "companies", force: :cascade do |t|
-    t.string "ticker"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "trades", force: :cascade do |t|
-    t.integer "shares"
-    t.decimal "avg_price_enter", precision: 6, scale: 3
-    t.decimal "avg_price_exit", precision: 6, scale: 3
-    t.date "date_enter"
-    t.date "date_exit"
-    t.boolean "is_active", default: true
-    t.integer "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
