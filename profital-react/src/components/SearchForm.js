@@ -4,16 +4,15 @@ import { connect } from 'react-redux';
 class SearchForm extends Component {
   onSubmit = e => {
     e.preventDefault();
-    if (this.state.text !== '') {
+    if (this.props.text !== '') {
       fetch(
-        `https://cloud.iexapis.com/v1/stock/${this.state.text}/quote?token=${process.env.REACT_APP_IEX_CLOUD_PUBLIC}`
+        `https://cloud.iexapis.com/v1/stock/${this.props.text}/quote?token=${process.env.REACT_APP_IEX_CLOUD_PUBLIC}`
       )
         .then(response => response.json())
-        .then(quote => console.log(quote));
+        .then(quote => this.props.search(quote));
     }
   };
 
-  // onChange = e => this.setState({ [e.target.name]: e.target.value });
   onChange = e => this.props.updateSearchText(e.target.value);
 
   render() {
@@ -45,8 +44,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSearchText: text => {
-      dispatch({ type: 'UPDATE_SEARCH_TEXT', payload: text });
+    updateSearchText: ticker => {
+      dispatch({ type: 'UPDATE_SEARCH_TEXT', payload: ticker });
+    },
+    search: quote => {
+      dispatch({ type: 'SEARCH', payload: quote });
     }
   };
 };

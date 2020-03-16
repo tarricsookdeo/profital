@@ -1,17 +1,20 @@
 const initial_state = {
   text: '',
-  results: []
+  result: {}
 };
 
 const searchReducer = (state = initial_state, action) => {
   switch (action.type) {
     case 'SEARCH':
-      return state;
-    case 'UPDATE_SEARCH_TEXT':
-      const newText = action.payload;
       return {
         ...state,
-        text: newText
+        text: '',
+        result: action.payload
+      };
+    case 'UPDATE_SEARCH_TEXT':
+      return {
+        ...state,
+        text: action.payload
       };
     default:
       return state;
