@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class Search extends Component {
-  state = {
-    text: ''
-  };
-
+class SearchForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     if (this.state.text !== '') {
@@ -16,7 +13,8 @@ class Search extends Component {
     }
   };
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  // onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onChange = e => this.props.updateSearchText(e.target.value);
 
   render() {
     return (
@@ -27,7 +25,7 @@ class Search extends Component {
             type='text'
             name='text'
             placeholder='Enter stock ticker...'
-            value={this.state.text}
+            value={this.props.text}
             onChange={this.onChange}
           />
           <button className='text-white bg-blue-500 py-2 px-10' type='submit'>
@@ -39,4 +37,18 @@ class Search extends Component {
   }
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    text: state.search.text
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateSearchText: text => {
+      dispatch({ type: 'UPDATE_SEARCH_TEXT', payload: text });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
