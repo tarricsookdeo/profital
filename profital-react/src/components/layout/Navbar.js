@@ -8,9 +8,12 @@ function Navbar() {
         <h1 className='text-white font-bold tracking-widest text-xl mt-2 ml-20'>
           PROFITAL
         </h1>
-        <button className='text-white mt-2 ml-auto mr-20 hover:text-purple-500'>
+        <Link
+          to='/'
+          className='text-white mt-3 ml-auto mr-20 hover:text-purple-500'
+        >
           My Watchlist
-        </button>
+        </Link>
       </div>
     </nav>
   );
