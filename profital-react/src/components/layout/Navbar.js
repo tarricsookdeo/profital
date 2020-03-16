@@ -7,10 +7,7 @@ function Navbar() {
       <h3>Profital</h3>
       <ul>
         <Link to='/'>
-          <li>Portfolio</li>
-        </Link>
-        <Link to='/trades'>
-          <li>Trades</li>
+          <li>Watchlist</li>
         </Link>
       </ul>
     </nav>
