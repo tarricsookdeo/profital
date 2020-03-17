@@ -13,3 +13,5 @@ const watchlistReducer = (state = initial_state, action) => {
       return state;
   }
 };
+
+export default watchlistReducer;
