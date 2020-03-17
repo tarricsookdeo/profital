@@ -1,8 +1,7 @@
 import React from 'react';
 import Navbar from './components/layout/Navbar';
 import Watchlist from './views/Watchlist';
-import SearchResult from './views/SearchResult';
-import Search from './components/SearchForm';
+import Search from './views/Search';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -10,10 +9,9 @@ function App() {
     <Router>
       <div className='App'>
         <Navbar />
-        <Search />
         <Switch>
           <Route path='/' exact component={Watchlist} />
-          <Route path='/search' exact component={SearchResult} />
+          <Route path='/search' exact component={Search} />
         </Switch>
       </div>
     </Router>
