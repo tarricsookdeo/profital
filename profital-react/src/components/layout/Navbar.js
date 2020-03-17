@@ -14,6 +14,12 @@ const Navbar = () => {
         >
           My Watchlist
         </Link>
+        <Link
+          to='/search'
+          className='text-white mt-3 mr-20 hover:text-purple-500'
+        >
+          Search
+        </Link>
       </div>
     </nav>
   );
