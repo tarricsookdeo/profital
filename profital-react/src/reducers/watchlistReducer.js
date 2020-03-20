@@ -1,5 +1,6 @@
 const initial_state = {
-  tickers: []
+  tickers: [],
+  tickerAddText: ''
 };
 
 const watchlistReducer = (state = initial_state, action) => {
@@ -9,9 +10,15 @@ const watchlistReducer = (state = initial_state, action) => {
         ...state,
         tickers: action.payload
       };
-    case 'UPDATE_TICKERS':
+    case 'UPDATE_TEXT':
       return {
         ...state,
+        tickerAddText: action.payload
+      };
+    case 'NEW_TICKERS':
+      return {
+        ...state,
+        tickerAddText: '',
         tickers: action.payload
       };
     default:

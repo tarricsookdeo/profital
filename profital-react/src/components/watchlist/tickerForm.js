@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 class TickerForm extends Component {
   onSubmit = e => {
     e.preventDefault();
-    const tickerText = document.getElementById('tickerText');
-    console.log(tickerText.value);
+    let text = this.props.tickerText;
+    console.log(text);
 
     const data = {
-      ticker: tickerText.value
+      ticker: text
     };
 
-    if (tickerText.value !== '') {
+    if (text !== '') {
       fetch('http://localhost:3001/companies', {
         method: 'POST',
         headers: {
@@ -21,13 +21,18 @@ class TickerForm extends Component {
       })
         .then(response => response.json())
         .then(data => {
-          console.log('Success:', data);
+          console.log(data);
+          fetch('http://localhost:3001/companies')
+            .then(response => response.json())
+            .then(tickers => this.props.newTickers(tickers));
         })
         .catch(error => {
           console.error('Error:', error);
         });
     }
   };
+
+  onChange = e => this.props.updateTickerText(e.target.value);
 
   render() {
     return (
@@ -39,6 +44,8 @@ class TickerForm extends Component {
             name='text'
             id='tickerText'
             placeholder='Enter a ticker to add to watchlist...'
+            value={this.props.tickerText}
+            onChange={this.onChange}
           />
           <button className='text-white bg-green-500 py-2 px-10' type='submit'>
             Add To Watchlist
@@ -49,12 +56,25 @@ class TickerForm extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    tickerText: state.watchlist.tickerAddText,
+    tickers: state.watchlist.tickers
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     fetchTickers: tickers => {
       dispatch({ type: 'FETCH_TICKERS', payload: tickers });
+    },
+    updateTickerText: text => {
+      dispatch({ type: 'UPDATE_TEXT', payload: text });
+    },
+    newTickers: tickers => {
+      dispatch({ type: 'NEW_TICKERS', payload: tickers });
     }
   };
 };
 
-export default connect(null, mapDispatchToProps)(TickerForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TickerForm);
