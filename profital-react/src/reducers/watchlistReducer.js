@@ -9,10 +9,10 @@ const watchlistReducer = (state = initial_state, action) => {
         ...state,
         tickers: action.payload
       };
-    case 'DELETE_TICKER':
+    case 'UPDATE_TICKERS':
       return {
         ...state,
-        ticker: action.payload
+        tickers: action.payload
       };
     default:
       return state;

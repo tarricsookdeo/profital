@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class List extends Component {
   render() {
     const watchlist = this.props.tickers.map(ticker => (
-      <ListItem key={ticker.id} ticker={ticker.ticker} />
+      <ListItem key={ticker.id} ticker={ticker} />
     ));
 
     return (
