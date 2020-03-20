@@ -6,7 +6,13 @@ class ListItem extends Component {
     e.preventDefault();
     fetch(`http://localhost:3001/companies/${this.props.ticker.id}`, {
       method: 'DELETE'
-    }).catch(error => console.log(error));
+    })
+      .then(
+        fetch('http://localhost:3001/companies')
+          .then(response => response.json())
+          .then(tickers => this.props.fetchTickers(tickers))
+      )
+      .catch(error => console.log(error));
 
     fetch('http://localhost:3001/companies')
       .then(response => response.json())
