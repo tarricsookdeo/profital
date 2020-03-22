@@ -4,7 +4,7 @@ export class Earnings extends Component {
   render() {
     return (
       <div>
-        <h1>Earnings</h1>
+        <h1>Earnings Today</h1>
       </div>
     );
   }
