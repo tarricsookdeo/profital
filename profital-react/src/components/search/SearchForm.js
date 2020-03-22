@@ -9,7 +9,13 @@ class SearchForm extends Component {
         `https://cloud.iexapis.com/v1/stock/${this.props.text}/quote?token=${process.env.REACT_APP_IEX_CLOUD_PUBLIC}`
       )
         .then(response => response.json())
-        .then(quote => this.props.search(quote));
+        .then(quote => {
+          this.props.search(quote);
+          this.props.updateSearchBlank(false);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   };
 
@@ -48,6 +54,9 @@ const mapDispatchToProps = dispatch => {
     },
     search: quote => {
       dispatch({ type: 'SEARCH', payload: quote });
+    },
+    updateSearchBlank: bool => {
+      dispatch({ type: 'UPDATE_SEARCH_BLANK', payload: bool });
     }
   };
 };

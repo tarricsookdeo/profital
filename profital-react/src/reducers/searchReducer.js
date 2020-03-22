@@ -1,6 +1,7 @@
 const initial_state = {
   text: '',
-  result: {}
+  result: {},
+  searchBlank: true
 };
 
 const searchReducer = (state = initial_state, action) => {
@@ -15,6 +16,11 @@ const searchReducer = (state = initial_state, action) => {
       return {
         ...state,
         text: action.payload
+      };
+    case 'UPDATE_SEARCH_BLANK':
+      return {
+        ...state,
+        searchBlank: action.payload
       };
     default:
       return state;
