@@ -22,7 +22,6 @@ class SearchForm extends Component {
           <input
             className='border-2 ml-40 pl-5 pr-40'
             type='text'
-            name='text'
             placeholder='Enter stock ticker...'
             value={this.props.text}
             onChange={this.onChange}
@@ -44,8 +43,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSearchText: ticker => {
-      dispatch({ type: 'UPDATE_SEARCH_TEXT', payload: ticker });
+    updateSearchText: text => {
+      dispatch({ type: 'UPDATE_SEARCH_TEXT', payload: text });
     },
     search: quote => {
       dispatch({ type: 'SEARCH', payload: quote });
