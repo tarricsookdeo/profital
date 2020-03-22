@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/layout/Navbar';
 import Watchlist from './views/Watchlist';
 import Search from './views/Search';
+import Earnings from './views/Earnings';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Watchlist} />
           <Route path='/search' exact component={Search} />
+          <Route path='/earnings' exact component={Earnings} />
         </Switch>
       </div>
     </Router>

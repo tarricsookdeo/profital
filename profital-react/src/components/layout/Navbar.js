@@ -10,15 +10,21 @@ const Navbar = () => {
         </h1>
         <Link
           to='/'
-          className='text-white mt-3 ml-auto mr-20 hover:text-purple-500'
+          className='text-white mt-3 ml-auto mr-10 hover:text-purple-500'
         >
           My Watchlist
         </Link>
         <Link
           to='/search'
-          className='text-white mt-3 mr-20 hover:text-purple-500'
+          className='text-white mt-3 mr-10 hover:text-purple-500'
         >
           Search
+        </Link>
+        <Link
+          to='/earnings'
+          className='text-white mt-3 mr-20 hover:text-purple-500'
+        >
+          Earnings
         </Link>
       </div>
     </nav>
