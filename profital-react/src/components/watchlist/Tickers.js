@@ -2,10 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 class Tickers extends Component {
-  componentDidMount() {
-    fetch('http://localhost:3001/companies')
-      .then(response => response.json())
-      .then(tickers => this.props.fetchTickers(tickers));
+  async componentDidMount() {
+    const response = await fetch('http://localhost:3001/companies');
+    const tickers = await response.json();
+    this.props.fetchTickers(tickers);
   }
   render() {
     return <Fragment></Fragment>;
