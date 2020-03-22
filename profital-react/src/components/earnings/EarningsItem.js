@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class EarningsItem extends Component {
+class EarningsItem extends Component {
   render() {
     return (
       <div>

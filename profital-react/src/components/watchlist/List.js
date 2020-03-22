@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListItem from './ListItem';
-import Tickers from './Tickers'
+import Tickers from './Tickers';
 import { connect } from 'react-redux';
 
 class List extends Component {

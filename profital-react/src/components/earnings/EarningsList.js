@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
 import EarningsItem from './EarningsItem';
+import { connect } from 'react-redux';
 
-export class EarningsList extends Component {
+class EarningsList extends Component {
   render() {
+    let earningsList;
+    if (this.props.earningsToday) {
+      earningsList = this.props.earnings.map(earning => (
+        <EarningsItem earning={earning} />
+      ));
+    }
     return (
       <div>
-        <h1>Earnings Today List:</h1>
+        {this.props.earningsToday ? (
+          { earningsList }
+        ) : (
+          <h1 className='ml-40 mt-10 text-3xl font-bold'>No earnings today</h1>
+        )}
       </div>
     );
   }
 }
 
-export default EarningsList;
+const mapStateToProps = state => {
+  return {
+    earnings: state.earnings.earnings,
+    earningsToday: state.earnings.earningsToday
+  };
+};
+
+export default connect(mapStateToProps)(EarningsList);

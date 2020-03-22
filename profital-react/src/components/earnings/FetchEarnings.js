@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-export class FetchEarnings extends Component {
+class FetchEarnings extends Component {
   componentDidMount() {
     fetch(
       `https://cloud.iexapis.com/v1/stock/market/today-earnings?token=${process.env.REACT_APP_IEX_CLOUD_PUBLIC}`
