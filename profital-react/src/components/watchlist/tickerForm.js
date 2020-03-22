@@ -5,7 +5,6 @@ class TickerForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     let text = this.props.tickerText;
-    console.log(text);
 
     const data = {
       ticker: text
@@ -21,7 +20,6 @@ class TickerForm extends Component {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           fetch('http://localhost:3001/companies')
             .then(response => response.json())
             .then(tickers => this.props.newTickers(tickers));
@@ -41,8 +39,6 @@ class TickerForm extends Component {
           <input
             className='border-2 ml-40 pl-5 pr-40'
             type='text'
-            name='text'
-            id='tickerText'
             placeholder='Enter a ticker to add to watchlist...'
             value={this.props.tickerText}
             onChange={this.onChange}
