@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import List from '../components/watchlist/List';
-import TickerForm from '../components/watchlist/tickerForm';
+import TickerForm from '../components/watchlist/TickerForm';
 
 export class Watchlist extends Component {
   render() {
