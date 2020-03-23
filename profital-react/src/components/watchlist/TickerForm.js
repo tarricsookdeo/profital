@@ -18,15 +18,21 @@ class TickerForm extends Component {
         },
         body: JSON.stringify(data)
       })
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw Error(response.status);
+          } else {
+            response.json();
+          }
+        })
         .then(data => {
           fetch('http://localhost:3001/companies')
             .then(response => response.json())
             .then(tickers => this.props.newTickers(tickers));
         })
         .catch(error => {
-          console.error('Error:', error);
-          this.props.updateError('This ticker is already in your watchlist');
+          console.log(error);
+          this.props.updateError('Ticker symbol already in watchlist');
         });
     }
   };
