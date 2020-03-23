@@ -28,7 +28,10 @@ class TickerForm extends Component {
         .then(data => {
           fetch('http://localhost:3001/companies')
             .then(response => response.json())
-            .then(tickers => this.props.newTickers(tickers));
+            .then(tickers => {
+              this.props.newTickers(tickers);
+              this.props.updateError(null);
+            });
         })
         .catch(error => {
           console.log(error);
