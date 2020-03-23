@@ -4,19 +4,29 @@ import { connect } from 'react-redux';
 
 class EarningsList extends Component {
   render() {
-    let earningsList;
-    if (this.props.earningsToday) {
-      earningsList = this.props.earnings.map(earning => (
-        <EarningsItem earning={earning} />
+    let btoEarnings;
+    let amcEarnings;
+    if (
+      this.props.earningsBto !== undefined &&
+      this.props.earningsAmc !== undefined
+    ) {
+      btoEarnings = this.props.earningsBto.map(earning => (
+        <EarningsItem key={earning.symbol} earning={earning} />
+      ));
+      amcEarnings = this.props.earningsAmc.map(earning => (
+        <EarningsItem key={earning.symbol} earning={earning} />
       ));
     }
     return (
       <div>
-        {this.props.earningsToday ? (
-          { earningsList }
-        ) : (
-          <h1 className='ml-40 mt-10 text-3xl font-bold'>No earnings today</h1>
-        )}
+        <h1 className='ml-40 mt-10 text-3xl font-bold'>
+          Earnings Before Market Open
+        </h1>
+        {btoEarnings}
+        <h1 className='ml-40 mt-10 text-3xl font-bold'>
+          Earnings After Market Close
+        </h1>
+        {amcEarnings}
       </div>
     );
   }
@@ -24,8 +34,8 @@ class EarningsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    earnings: state.earnings.earnings,
-    earningsToday: state.earnings.earningsToday
+    earningsBto: state.earnings.earnings['bto'],
+    earningsAmc: state.earnings.earnings['amc']
   };
 };
 

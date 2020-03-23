@@ -4,7 +4,6 @@ import Errors from './components/layout/Errors';
 import Watchlist from './views/Watchlist';
 import Search from './views/Search';
 import Earnings from './views/Earnings';
-import FetchEarnings from './components/earnings/FetchEarnings';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <div className='App'>
         <Navbar />
         <Errors />
-        <FetchEarnings />
         <Switch>
           <Route path='/' exact component={Watchlist} />
           <Route path='/search' exact component={Search} />
