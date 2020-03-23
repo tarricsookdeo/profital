@@ -4,7 +4,7 @@ const initial_state = {
 
 const errorReducer = (state = initial_state, action) => {
   switch (action.type) {
-    case 'UPDATE_ERRORS':
+    case 'UPDATE_ERROR':
       return {
         ...state,
         error: action.payload

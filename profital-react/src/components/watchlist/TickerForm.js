@@ -26,6 +26,7 @@ class TickerForm extends Component {
         })
         .catch(error => {
           console.error('Error:', error);
+          this.props.updateError('This ticker is already in your watchlist');
         });
     }
   };
@@ -55,7 +56,8 @@ class TickerForm extends Component {
 const mapStateToProps = state => {
   return {
     tickerText: state.watchlist.tickerAddText,
-    tickers: state.watchlist.tickers
+    tickers: state.watchlist.tickers,
+    error: state.error.error
   };
 };
 
@@ -69,6 +71,9 @@ const mapDispatchToProps = dispatch => {
     },
     newTickers: tickers => {
       dispatch({ type: 'NEW_TICKERS', payload: tickers });
+    },
+    updateError: error => {
+      dispatch({ type: 'UPDATE_ERROR', payload: error });
     }
   };
 };
