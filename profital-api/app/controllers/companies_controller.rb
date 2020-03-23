@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     @company = Company.new(company_params)
+    @company.ticker = @company.ticker.upcase
 
     if @company.save
       render json: @company, status: :created, location: @company
