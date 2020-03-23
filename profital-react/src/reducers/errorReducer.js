@@ -1,5 +1,5 @@
 const initial_state = {
-  error: ''
+  error: null
 };
 
 const errorReducer = (state = initial_state, action) => {

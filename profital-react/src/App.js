@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './components/layout/Navbar';
+import Errors from './components/layout/Errors';
 import Watchlist from './views/Watchlist';
 import Search from './views/Search';
 import Earnings from './views/Earnings';
@@ -11,6 +12,7 @@ function App() {
     <Router>
       <div className='App'>
         <Navbar />
+        <Errors />
         <FetchEarnings />
         <Switch>
           <Route path='/' exact component={Watchlist} />

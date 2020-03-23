@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 class FetchEarnings extends Component {
   componentDidMount() {
     fetch(
-      `https://cloud.iexapis.com/v1/stock/market/today-earnings?token=${process.env.REACT_APP_IEX_CLOUD_PUBLIC}`
+      // https://cloud.iexapis.com/v1/stock/market/today-earnings?token=${process.env.REACT_APP_IEX_CLOUD_PUBLIC}
+      `https://sandbox.iexapis.com/stable/stock/market/today-earnings?token=Tsk_9c3a615c10454606bf881af72b404c22`
     )
       .then(response => response.json())
       .then(earnings => this.props.fetchEarnings(earnings));
