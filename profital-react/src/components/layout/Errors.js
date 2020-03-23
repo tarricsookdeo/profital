@@ -5,7 +5,13 @@ class Errors extends Component {
   render() {
     return (
       <div>
-          {this.props.error !== null ? <h1>{this.props.error}</h1> : <Fragment></Fragment>}
+        {this.props.error !== null ? (
+          <h1 className='ml-10 mt-10 text-3xl font-bold text-red-500'>
+            {this.props.error}
+          </h1>
+        ) : (
+          <Fragment></Fragment>
+        )}
       </div>
     );
   }
