@@ -8,16 +8,11 @@ class SearchForm extends Component {
       fetch(
         `https://cloud.iexapis.com/v1/stock/${this.props.text}/quote?token=${process.env.REACT_APP_IEX_CLOUD_PUBLIC}`
       )
-        .then(response => {
-          if (!response.ok) {
-            throw Error(response.status);
-          } else {
-            response.json();
-          }
-        })
+        .then(response => response.json())
         .then(quote => {
           this.props.search(quote);
           this.props.updateSearchBlank(false);
+          this.props.updateError(null);
         })
         .catch(error => {
           console.log(error);
